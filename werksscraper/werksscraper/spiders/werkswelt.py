@@ -64,7 +64,7 @@ def parse_dishes(dishes):
 
         # addidional info badges
         badges = [m[1] for m in re.finditer(r'<img.+?infomax-food-icon (\w+).+?>', rest)]
-        assert len(badges) > 0, "implausible dish without badges"
+        # assert len(badges) > 0, "implausible dish without badges"
 
         # nutritional info, not always present
         try:
