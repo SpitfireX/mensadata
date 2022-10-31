@@ -48,6 +48,7 @@ class WerksweltSpider(scrapy.Spider):
         yield {
             'site': site,
             'date': date,
+            'accesstime': datetime.datetime.now(),
             'dishes': list(parse_dishes(dishes)),
             'raw': dishes,
         }
