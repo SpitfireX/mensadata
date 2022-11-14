@@ -69,7 +69,7 @@ def parse_dishes(dishes):
 
         # nutritional info, not always present
         try:
-            nutrition = re.search(r'(Energie.+)\]', rest)[1].strip()
+            nutrition = re.search(r'/summary>(Energie.+)</', rest)[1].strip()
         except:
             nutrition = None
 
