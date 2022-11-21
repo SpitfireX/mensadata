@@ -101,9 +101,9 @@ def parse_dishes(dishes):
                 'optional': False,
             } for name, allergens in components]
 
-        for n, c in enumerate(components):
-            if n > 0:
-                components[n]['name'] = re.sub(r'und|mit|auf|an|dazu', '', components[n]['name']).strip()
+        for i, c in enumerate(components):
+            if i > 0:
+                components[i]['name'] = re.sub(r'und|mit|auf|an|dazu', '', components[i]['name']).strip()
         
         if sides:
             s = re.split(allergen_regex, sides[0])
@@ -118,7 +118,7 @@ def parse_dishes(dishes):
                 )
 
         yield {
-            'n': n,
+            'n': int(n),
             'special': bool(special),
             'canonical': canonical_name,
             'components': components,
