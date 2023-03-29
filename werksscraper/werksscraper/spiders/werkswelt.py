@@ -54,13 +54,13 @@ class WerksweltSpider(scrapy.Spider):
         }
 
 def parse_dishes(dishes):
-
-    dishes = re.split(r'(Aktions)?[eE]ssen (\d+)', dishes)
+    dishes = re.split(r'(?:(Aktions)?[eE]ssen|Suppe) (\d+)', dishes)
     dishes = zip(dishes[1::3], dishes[2::3], dishes[3::3]) # group list elements into tuples, skip 0 because always empty/irrelevant
     
     for special, n, text in dishes:
 
         # split string on prices
+        print(len(re.split(r'(\d+,\d+) € \(.+?\)', text.strip())))
         name, pstud, _, pemp, _, pguest, rest = re.split(r'(\d+,\d+) € \(.+?\)', text.strip())
 
         # addidional info badges
